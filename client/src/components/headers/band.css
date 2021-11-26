@@ -1,0 +1,27 @@
+.band {
+  min-height: 70px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.band ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.band ul li {
+  width: 25%;
+  display: flex;
+  align-items: center;
+}
+
+.band ul li img {
+  width: 40px;
+  margin: 10px
+}

@@ -1,0 +1,81 @@
+.products{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-items: center;
+    margin: 20px 0;
+}
+
+/* ----------- Product Item ----------------- */
+@import url("../utils/productItem/productItem.css");
+
+.delete-all{
+    text-align: right;
+    margin: 20px;
+}
+.delete-all input{
+    height: 25px;
+    width: 25px;
+    transform: translateY(5px);
+    margin: 0 15px;
+}
+.delete-all span{
+    text-transform: uppercase;
+    color: rgb(3, 165, 206);
+    letter-spacing: 1.3px;
+}
+.delete-all button{
+    border: 1px solid crimson;
+    padding: 10px 25px;
+    color: crimson;
+    text-transform: uppercase;
+}
+
+/* ------------ Filters Menu ----------------- */
+.filter_menu{
+    width: 100%;
+    min-height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+.filter_menu select, input{
+    border: 1px solid #ccc;
+    outline: none;
+    height: 40px;
+    padding: 0 5px;
+}
+.filter_menu input{
+    flex: 1;
+    margin: 0 10px;
+}
+
+/* -------------------- Load More --------------- */
+.load_more{
+    text-align: center;
+}
+.load_more button{
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 30px;
+    border-radius: 30px;
+    background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+    background-position: 100% 0;
+    background-size: 200% 200%;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    box-shadow: 0 16px 32px 0 rgba(0, 40, 120, .35);
+    transition: .5s;
+    padding: 10px 25px;
+}
+.load_more button:hover {
+    box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
+    background-position: 0 0;
+}
