@@ -65,15 +65,15 @@ const productCtrl = {
     },
     createProduct: async(req, res) =>{
         try {
-            const {product_id, title, price, description, content, images, category} = req.body;
+            const { title, price, description, content, images, category} = req.body;
             if(!images) return res.status(400).json({msg: "Изображение не загружено"})
 
-            const product = await Products.findOne({product_id})
-            if(product)
-                return res.status(400).json({msg: "Этот товар уже существует."})
+           const maxProductId = await Products.findOne().sort('-product_id')
+
+            console.log(maxProductId)
 
             const newProduct = new Products({
-                product_id, title: title.toLowerCase(), price, description, content, images, category
+                product_id: Number(maxProductId.product_id) + 1, title: title.toLowerCase(), price, description, content, images, category
             })
 
             await newProduct.save()

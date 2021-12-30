@@ -42,7 +42,7 @@ function Filters() {
                 </select>
             </div>
 
-            <input type="text" value={search} placeholder="Введите свой поиск"
+            <input style={{ width:"100px"}} type="text" value={search} placeholder="Введите свой поиск"
             onChange={e => setSearch(e.target.value.toLowerCase())} />
         </div>
     )
