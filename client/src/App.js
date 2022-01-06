@@ -4,6 +4,8 @@ import {DataProvider} from './GlobalState'
 import Header from './components/headers/Header'
 import MainPages from './components/mainpages/Pages'
 import Band from './components/headers/Band';
+import LowerAnnouncement from './components/headers/LowerAnnouncement';
+import Slider from './components/headers/Slider';
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <div className="App">
           <Header />
             <Band />
-              <MainPages />
+              <LowerAnnouncement />
+                <Slider />
+                 <MainPages />
         </div>
       </Router>
     </DataProvider>

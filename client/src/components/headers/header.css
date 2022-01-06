@@ -7,9 +7,11 @@ header{
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid #ddd;
+    background-color: rgba(106, 177, 215, 0.07);
 }
 header .logo{
     flex: 1;
+    padding-left: 10px;
 }
 header a{
     text-transform: uppercase;
@@ -26,9 +28,11 @@ header ul li:hover{
 .menu{
     display: none;
 }
+
 .cart-icon{
     position: relative;
     margin-right: 20px;
+
 }
 .cart-icon span{
     background: crimson;

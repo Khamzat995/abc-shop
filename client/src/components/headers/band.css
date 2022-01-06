@@ -7,6 +7,7 @@
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid #ddd;
+  /*background-color: rgba(148, 106, 215, 0.2);*/
 }
 .band ul {
   width: 100%;

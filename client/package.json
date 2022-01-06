@@ -4,6 +4,7 @@
   "description": "client abc-shop",
   "private": true,
   "dependencies": {
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -11,12 +12,13 @@
     "react": "^16.13.1",
     "react-bootstrap": "^2.0.2",
     "react-dom": "^16.13.1",
+    "react-icons": "^4.3.1",
     "react-paypal-express-checkout": "^1.0.5",
+    "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-scroll": "^1.8.4",
     "react-scroll-to-top": "^1.0.5",
-    "@material-ui/icons": "^4.11.2",
     "reactstrap": "^9.0.1",
     "styled-components": "^5.3.3"
   },
@@ -48,7 +50,5 @@
   "author": "Khamzat995",
   "license": "ISC",
   "proxy": "http://localhost:5000",
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }

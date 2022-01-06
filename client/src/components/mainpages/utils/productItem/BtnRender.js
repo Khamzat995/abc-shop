@@ -25,12 +25,12 @@ function BtnRender({product, deleteProduct}) {
                     </Link>
                 </>
                 : <>
-                    <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
-                        Добавить
-                    </Link>
-                    <Link id="btn_view" to={`/detail/${product._id}`} onClick={handleClick}>
-                         Смотреть
-                    </Link>
+                    {/*<Link id="btn_buy" to="#!" onClick={() => addCart(product)}>*/}
+                    {/*    Добавить*/}
+                    {/*</Link>*/}
+                    {/*<Link id="btn_view" to={`/detail/${product._id}`} onClick={handleClick}>*/}
+                    {/*     Смотреть*/}
+                    {/*</Link>*/}
                 </>
             }
         </div>

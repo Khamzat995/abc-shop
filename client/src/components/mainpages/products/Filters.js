@@ -16,16 +16,24 @@ function Filters() {
     }
 
     return (
+
+
+
+
+
+
+
+
         <div className="filter_menu">
             <div className="row" style={{marginRight: "10px"}}>
                 <span>Фильтр: </span>
-                <select name="category" value={category} onChange={handleCategory} >
+                <select value={category} onChange={e => setCategory(e.target.value)} >
                     <option value=''>Все товары</option>
                     {
                         categories.map(category => (
-                            <option value={"category=" + category._id} key={category._id}>
-                                {category.name}
-                            </option>
+                          <option value={"category=" + category._id} key={category._id}>
+                              {category.name}
+                          </option>
                         ))
                     }
                 </select>
@@ -45,6 +53,7 @@ function Filters() {
             <input style={{ width:"100px"}} type="text" value={search} placeholder="Введите свой поиск"
             onChange={e => setSearch(e.target.value.toLowerCase())} />
         </div>
+
     )
 }
 

@@ -15,9 +15,7 @@ function Header() {
 
     const logoutUser = async () =>{
         await axios.get('/user/logout')
-        
         localStorage.removeItem('firstLogin')
-        
         window.location.href = "/";
     }
 
@@ -29,7 +27,6 @@ function Header() {
             </>
         )
     }
-
     const loggedRouter = () =>{
         return(
             <>
@@ -38,8 +35,6 @@ function Header() {
             </>
         )
     }
-
-
     const styleMenu = {
         left: menu ? 0 : "-100%"
     }
@@ -49,29 +44,22 @@ function Header() {
             <div className="menu" onClick={() => setMenu(!menu)}>
                 <img src={Menu} alt="" width="30" />
             </div>
-
             <div className="logo">
                 <h1>
                     <Link to="/">{isAdmin ? 'Страница админа' : 'лучшие цены'}</Link>
                 </h1>
             </div>
-
             <ul style={styleMenu}>
               <li><Link to="/">{isAdmin ? 'Товары' : 'Магазин'}</Link></li>
               <li><Link to="/about">О нас</Link></li>
-
                 {isAdmin && adminRouter()}
-
                 {
                     isLogged ? loggedRouter() : <li><Link to="/login">Войти ✥ Регистрация</Link></li>
                 }
-
                 <li onClick={() => setMenu(!menu)}>
-                    <img src={Close} alt="" width="30" className="menu" />
+                    <img src={Close} alt="картинка" width="30" className="menu" />
                 </li>
-
             </ul>
-
             {
                 isAdmin ? '' 
                 :<div className="cart-icon">
@@ -84,6 +72,5 @@ function Header() {
         </header>
    )
 }
-
 
 export default Header

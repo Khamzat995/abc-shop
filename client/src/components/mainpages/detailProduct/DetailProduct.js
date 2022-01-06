@@ -11,17 +11,6 @@ function DetailProduct() {
     const addCart = state.userAPI.addCart
     const [detailProduct, setDetailProduct] = useState([])
 
-    //  const productsEndRef = useRef(null)
-    //
-    //     useEffect(() => {
-    //     productsEndRef.current.scrollIntoView({ block: "start", inline: "nearest" })
-    // });
-    // //
-    //     useEffect(() => {
-    //     productsEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    // });
-
-
     useEffect(() =>{
         if(params.id){
 
@@ -65,9 +54,18 @@ function DetailProduct() {
                     {
                         products.map(product => {
                             return product.category === detailProduct.category 
-                                ? <ProductItem key={product._id} product={product} /> : null
+                                ?
+                                 <ProductItem key={product._id} product={product} /> : null
                         })
                     }
+
+                    {/*<div className="load_more">*/}
+                    {/*    {*/}
+                    {/*        result < page * 16 ? ""*/}
+                    {/*          : <button onClick={() => setPage(page+1)}>Показать еще</button>*/}
+                    {/*    }*/}
+                    {/*</div>*/}
+
                 </div>
             </div>
         </>
