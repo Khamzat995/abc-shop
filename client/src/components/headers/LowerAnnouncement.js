@@ -20,6 +20,7 @@ const Container = styled.div`
 
   & p {
     width: 100%;
+    font-size: 20px;
     position: relative;
     color: #dc5e7b;
     animation: ${runningText} 10s infinite linear;

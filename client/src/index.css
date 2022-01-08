@@ -61,6 +61,12 @@ button{
 /* ------------------- Create Product -------------- */
 @import url("./components/mainpages/createProduct/createProduct.css");
 
+/* banner */
+@import url('./components/mainpages/banner/Banner.css');
+
+/* banner */
+@import url('./components/mainpages/bannerOne/BannerOne.css');
+
 /* ----------------- Responsive ------------------ */
 @media (max-width: 820px){
   header .logo{

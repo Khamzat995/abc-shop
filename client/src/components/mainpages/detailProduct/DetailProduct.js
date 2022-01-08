@@ -29,14 +29,14 @@ function DetailProduct() {
                 <div className="box-detail">
                     <div className="row">
                         <h2>{detailProduct.title}</h2>
-                        <h6>артикул: {detailProduct.product_id}</h6>
+                        {/*<h6>артикул: {detailProduct.product_id}</h6>*/}
                     </div>
                     <span>{detailProduct.price}{" "} руб.</span>
                     <p>{detailProduct.description}</p>
                     <p>{detailProduct.content}</p>
                     <h5>Дополнительная информация по товару:</h5>
-                    <h5>Tел: +90 0535-743-18-85</h5>
-                    <h5>WhatsApp мегафон: +7 938 997-65‐19 </h5>
+                    <h5 style={{color: '#dc5e7b'}}>Tел: +90 0535-743-18-85</h5>
+                    <h5 style={{color: '#dc5e7b'}}>WhatsApp мегафон: +7 938 997-65‐19 </h5>
 
                     <Link to="/cart" className="cart"
                     onClick={() => addCart(detailProduct)}>

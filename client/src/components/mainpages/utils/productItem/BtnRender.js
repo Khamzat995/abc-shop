@@ -5,7 +5,7 @@ import {GlobalState} from '../../../../GlobalState'
 function BtnRender({product, deleteProduct}) {
     const state = useContext(GlobalState)
     const [isAdmin] = state.userAPI.isAdmin
-    const addCart = state.userAPI.addCart
+    // const addCart = state.userAPI.addCart
 
     const handleClick = () => {
         window.scroll({top: 150, behavior: 'smooth' })
@@ -20,7 +20,7 @@ function BtnRender({product, deleteProduct}) {
                     onClick={() =>deleteProduct(product._id, product.images.public_id)}>
                         Удалить
                     </Link>
-                    <Link id="btn_view" to={`/edit_product/${product._id}`}>
+                    <Link id="btn_view" to={`/edit_product/${product._id}`} onClick={handleClick}>
                         Изменить
                     </Link>
                 </>

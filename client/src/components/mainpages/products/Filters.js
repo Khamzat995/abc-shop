@@ -10,22 +10,15 @@ function Filters() {
     const [search, setSearch] = state.productsAPI.search
 
 
-    const handleCategory = e => {
-        setCategory(e.target.value)
-        setSearch('')
-    }
+    // const handleCategory = e => {
+    //     setCategory(e.target.value)
+    //     setSearch('')
+    // }
 
     return (
 
-
-
-
-
-
-
-
         <div className="filter_menu">
-            <div className="row" style={{marginRight: "10px"}}>
+            <div className="rowOne">
                 <span>Фильтр: </span>
                 <select value={category} onChange={e => setCategory(e.target.value)} >
                     <option value=''>Все товары</option>
@@ -39,7 +32,7 @@ function Filters() {
                 </select>
             </div>
 
-            <div className="row sort">
+            <div className="rowOne">
                 <span>Сортировка: </span>
                 <select value={sort} onChange={e => setSort(e.target.value)} >
                     <option value=''>Новинки</option>

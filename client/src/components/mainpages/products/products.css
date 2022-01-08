@@ -44,27 +44,29 @@
     flex-wrap: wrap;
     margin: 15px 0;
     position: absolute;
+    padding: 30px 10px 10px ;
 }
 .filter_menu {
-    background-color: white;
-    padding: 5px;
+    background-color: rgb(237, 241, 248);
     position: sticky;
     top: 0;
-    margin-bottom: 1px;
+    /*margin-bottom: 1px;*/
     z-index: 1;
 }
+
+.filter_menu .rowOne {
+    padding: 5px;
+}
+
 .filter_menu select, input{
     border: 1px solid #ccc;
     outline: none;
     height: 40px;
     padding: 0 5px;
-
-}
+    }
 .filter_menu input{
     flex: 1;
     margin: 0 10px;
-
-
 }
 
 /* -------------------- Load More --------------- */

@@ -2,12 +2,17 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import odejda from './Images/odejda.jpg';
 import family from './Images/family.jpg';
+import whatsapp from '../../headers/icon/whatsapp.png';
+import telegram from '../../headers/icon/telegram.png';
+import flagOne from '../../headers/icon/flagOne.jpg';
+import mailRu from '../../headers/icon/mailRu.png';
+import instagramNew from '../../headers/icon/instagramNew.jpg';
 
 
 function About() {
   return (
     <main>
-      <img src={odejda} style={{paddingTop:"20px", marginBottom:"20px", width: "100%"}}  alt='#'/>
+      <img src={odejda} style={{paddingTop:"30px", marginBottom:"20px", width: "100%"}}  alt='#'/>
       <Container >
         <Row style={{display: "flex", flexDirection: "column", paddingBottom: "30px"}}>
           <Col style={{flexBasis: "50%", marginBottom:"20px"}}>
@@ -29,18 +34,37 @@ function About() {
               <p style={{textIndent: "1.5em", textAlign: "justify"}}>Все интересующие Вас вопросы можете задавать по телефону, WhatsApp, Telegram или электронной почте.</p>
               <h3 style={{textIndent: "1.5em", textAlign: "justify", marginTop: "5px"}}>Tел: +90 0535-743-18-85</h3>
               <h3 style={{textIndent: "1.5em", textAlign: "justify"}}>WhatsApp: +7 938 997-65‐19 </h3>
+
+              <div className='band'>
+                <ul >
+                  <li >
+                    <img className="WhatsApp" src={whatsapp} alt='icons' style={{ marginRight:'5px'}}/>
+                    <img src={telegram}  alt='icons' style={{ marginRight:'10px'}}/>
+                    <p>+7 938 997-65‐19 </p>
+                  </li>
+                  <li  >
+                    <img src={flagOne}  alt='icons' style={{marginLeft:'10px', marginRight:'10px'}}/>
+                    <p>+90 0535-743-18-85 </p>
+                  </li>
+                  <li >
+                    <img src={mailRu}  alt='icons' style={{marginLeft:'10px', marginRight:'10px'}}/>
+                    <p>zura.azersaeva@mail.ru</p>
+                  </li>
+                  <li >
+                    <img src={instagramNew} alt='icons' style={{marginLeft:'10px', marginRight:'10px'}}/>
+                    <p>modern_shop_istanbul</p>
+                  </li>
+                </ul>
+              </div>
+
             </div>
+
           </Col>
           <Col style={{flexBasis: "50%",}}>
             <img src={family} width="100%" alt='картинка'/>
           </Col>
         </Row>
       </Container>
-      <div style={{marginTop: "10px", paddingBottom: "40px", height: "40px"}}>
-        <p style={{textAlign: "center"}}>
-          © 2021, все права защищены.
-        </p>
-      </div>
     </main>
   );
 }

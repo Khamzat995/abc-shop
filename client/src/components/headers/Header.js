@@ -46,9 +46,11 @@ function Header() {
             </div>
             <div className="logo">
                 <h1>
-                    <Link to="/">{isAdmin ? 'Страница админа' : 'лучшие цены'}</Link>
+                    <Link to="/">{isAdmin ? 'Страница админа' : 'лучшие цены' }</Link>
                 </h1>
+              <h3 className="fas fa-phone">{" "}+90 552 286 8989</h3>
             </div>
+
             <ul style={styleMenu}>
               <li><Link to="/">{isAdmin ? 'Товары' : 'Магазин'}</Link></li>
               <li><Link to="/about">О нас</Link></li>
