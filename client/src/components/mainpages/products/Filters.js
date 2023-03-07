@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import {GlobalState} from '../../../GlobalState'
+import React, { useContext } from 'react'
+import { GlobalState } from '../../../GlobalState'
 
 function Filters() {
     const state = useContext(GlobalState)
@@ -17,22 +17,23 @@ function Filters() {
 
     return (
 
-        <div className="filter_menu">
-            <div className="rowOne">
+        <div className="filter-menu">
+            <div className="row-one">
                 <span>Фильтр: </span>
                 <select value={category} onChange={e => setCategory(e.target.value)} >
                     <option value=''>Все товары</option>
                     {
                         categories.map(category => (
-                          <option value={"category=" + category._id} key={category._id}>
-                              {category.name}
-                          </option>
+                            <option value={"category=" + category._id} key={category._id}>
+                                {category.name}
+                            </option>
                         ))
                     }
                 </select>
+
             </div>
 
-            <div className="rowOne">
+            <div className="row-one">
                 <span>Сортировка: </span>
                 <select value={sort} onChange={e => setSort(e.target.value)} >
                     <option value=''>Новинки</option>
@@ -43,8 +44,8 @@ function Filters() {
                 </select>
             </div>
 
-            <input style={{ width:"100px"}} type="text" value={search} placeholder="Введите свой поиск"
-            onChange={e => setSearch(e.target.value.toLowerCase())} />
+            <input style={{ width: "100px" }} type="text" value={search} placeholder="Введите свой поиск"
+                onChange={e => setSearch(e.target.value.toLowerCase())} />
         </div>
 
     )
