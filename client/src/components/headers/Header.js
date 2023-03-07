@@ -1,9 +1,9 @@
-import React, {useContext, useState} from 'react'
-import {GlobalState} from '../../GlobalState'
+import React, { useContext, useState } from 'react'
+import { GlobalState } from '../../GlobalState'
 import Menu from './icon/menu.svg'
 import Close from './icon/close.svg'
 import Cart from './icon/cart.svg'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function Header() {
@@ -13,22 +13,23 @@ function Header() {
     const [cart] = state.userAPI.cart
     const [menu, setMenu] = useState(false)
 
-    const logoutUser = async () =>{
+    const logoutUser = async () => {
         await axios.get('/user/logout')
         localStorage.removeItem('firstLogin')
         window.location.href = "/";
     }
 
-    const adminRouter = () =>{
-        return(
+    const adminRouter = () => {
+        return (
             <>
                 <li><Link to="/create_product">Создать продукт</Link></li>
                 <li><Link to="/category">Категории</Link></li>
+                <li><Link to="/brand">Бренды</Link></li>
             </>
         )
     }
-    const loggedRouter = () =>{
-        return(
+    const loggedRouter = () => {
+        return (
             <>
                 <li><Link to="/history">История</Link></li>
                 <li><Link to="/" onClick={logoutUser}>Выйти</Link></li>
@@ -46,14 +47,14 @@ function Header() {
             </div>
             <div className="logo">
                 <h1>
-                    <Link to="/">{isAdmin ? 'Страница админа' : 'лучшие цены' }</Link>
+                    <Link to="/">{isAdmin ? 'Страница админа' : 'лучшие цены'}</Link>
                 </h1>
-              <h3 className="fas fa-phone">{" "}+90 552 286 8989</h3>
+                <h3 className="fas fa-phone">{" "}+90 552 286 8989</h3>
             </div>
 
             <ul style={styleMenu}>
-              <li><Link to="/">{isAdmin ? 'Товары' : 'Магазин'}</Link></li>
-              <li><Link to="/about">О нас</Link></li>
+                <li><Link to="/">{isAdmin ? 'Товары' : 'Магазин'}</Link></li>
+                <li><Link to="/about">О нас</Link></li>
                 {isAdmin && adminRouter()}
                 {
                     isLogged ? loggedRouter() : <li><Link to="/login">Войти ✥ Регистрация</Link></li>
@@ -63,16 +64,16 @@ function Header() {
                 </li>
             </ul>
             {
-                isAdmin ? '' 
-                :<div className="cart-icon">
-                    <span>{cart.length}</span>
-                    <Link to="/cart">
-                        <img src={Cart} alt="" width="30" />
-                    </Link>
-                </div>
+                isAdmin ? ''
+                    : <div className="cart-icon">
+                        <span>{cart.length}</span>
+                        <Link to="/cart">
+                            <img src={Cart} alt="" width="30" />
+                        </Link>
+                    </div>
             }
         </header>
-   )
+    )
 }
 
 export default Header

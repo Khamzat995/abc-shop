@@ -1,32 +1,34 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function ProductsAPI() {
     const [products, setProducts] = useState([])
     const [callback, setCallback] = useState(false)
     const [category, setCategory] = useState('')
+    const [brand, setBrand] = useState('')
     const [sort, setSort] = useState('')
     const [search, setSearch] = useState('')
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
 
-    useEffect(() =>{
-            try {
-                const getProducts = async () => {
-                    const res = await axios.get(`/api/products?limit=${page*18}&${category}&${sort}&title[regex]=${search}`)
-                    setProducts(res.data.products)
-                    setResult(res.data.result)
-                }
-                getProducts()
-            } catch (err) {
-                alert (err.msg)
+    useEffect(() => {
+        try {
+            const getProducts = async () => {
+                const res = await axios.get(`/api/products?limit=${page * 18}&${category}&${brand}&${sort}&title[regex]=${search}`)
+                setProducts(res.data.products)
+                setResult(res.data.result)
             }
-    },[callback, category, sort, search, page])
-    
+            getProducts()
+        } catch (err) {
+            alert(err.msg)
+        }
+    }, [callback, category, brand, sort, search, page])
+
     return {
         products: [products, setProducts],
         callback: [callback, setCallback],
         category: [category, setCategory],
+        brand: [brand, setBrand],
         sort: [sort, setSort],
         search: [search, setSearch],
         page: [page, setPage],

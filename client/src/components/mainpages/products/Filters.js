@@ -4,22 +4,18 @@ import { GlobalState } from '../../../GlobalState'
 function Filters() {
     const state = useContext(GlobalState)
     const [categories] = state.categoriesAPI.categories
+    const [brands] = state.brandsAPI.brands
 
     const [category, setCategory] = state.productsAPI.category
+    const [brand, setBrand] = state.productsAPI.brand
     const [sort, setSort] = state.productsAPI.sort
     const [search, setSearch] = state.productsAPI.search
-
-
-    // const handleCategory = e => {
-    //     setCategory(e.target.value)
-    //     setSearch('')
-    // }
 
     return (
 
         <div className="filter-menu">
             <div className="row-one">
-                <span>Фильтр: </span>
+                <span>Категории: </span>
                 <select value={category} onChange={e => setCategory(e.target.value)} >
                     <option value=''>Все товары</option>
                     {
@@ -30,7 +26,19 @@ function Filters() {
                         ))
                     }
                 </select>
-
+            </div>
+            <div className="row-one">
+                <span>Бренды: </span>
+                <select value={brand} onChange={e => setBrand(e.target.value)} >
+                    <option value=''>Все бренды</option>
+                    {
+                        brands.map(brand => (
+                            <option value={"brand=" + brand._id} key={brand._id}>
+                                {brand.name}
+                            </option>
+                        ))
+                    }
+                </select>
             </div>
 
             <div className="row-one">

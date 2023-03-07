@@ -57,12 +57,7 @@ function DetailProduct() {
                                 <ProductItem key={product._id} product={product} /> : null
                         })
                     }
-                    {/*<div className="load_more">*/}
-                    {/*    {*/}
-                    {/*        result < page * 16 ? ""*/}
-                    {/*          : <button onClick={() => setPage(page+1)}>Показать еще</button>*/}
-                    {/*    }*/}
-                    {/*</div>*/}
+
                 </div>
             </div>
         </>

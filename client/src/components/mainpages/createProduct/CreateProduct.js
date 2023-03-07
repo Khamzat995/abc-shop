@@ -1,8 +1,8 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
-import {GlobalState} from '../../../GlobalState'
+import { GlobalState } from '../../../GlobalState'
 import Loading from '../utils/loading/Loading'
-import {useHistory, useParams} from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 const initialState = {
     product_id: '',
@@ -11,6 +11,7 @@ const initialState = {
     description: 'введите описание продукта',
     content: 'содержание продукта',
     category: '',
+    brand: '',
     _id: ''
 }
 
@@ -18,6 +19,7 @@ function CreateProduct() {
     const state = useContext(GlobalState)
     const [product, setProduct] = useState(initialState)
     const [categories] = state.categoriesAPI.categories
+    const [brands] = state.brandsAPI.brands
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
 
@@ -33,33 +35,33 @@ function CreateProduct() {
     const [callback, setCallback] = state.productsAPI.callback
 
     useEffect(() => {
-        if(param.id){
+        if (param.id) {
             setOnEdit(true)
             products.forEach(product => {
-                if(product._id === param.id) {
+                if (product._id === param.id) {
                     setProduct(product)
                     setImages(product.images)
                 }
             })
-        }else{
+        } else {
             setOnEdit(false)
             setProduct(initialState)
             setImages(false)
         }
     }, [param.id, products])
 
-    const handleUpload = async e =>{
+    const handleUpload = async e => {
         e.preventDefault()
         try {
-            if(!isAdmin) return alert("Ты не админ, вали отсюда!!!")
+            if (!isAdmin) return alert("Ты не админ, вали отсюда!!!")
             const file = e.target.files[0]
-            
-            if(!file) return alert("Файл не существует.")
 
-            if(file.size > 1024 * 1024) // 1mb
+            if (!file) return alert("Файл не существует.")
+
+            if (file.size > 1024 * 1024) // 1mb
                 return alert("Размер слишком велик!")
 
-            if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
+            if (file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
                 return alert("Формат файла неверный.")
 
             let formData = new FormData()
@@ -67,7 +69,7 @@ function CreateProduct() {
 
             setLoading(true)
             const res = await axios.post('/api/upload', formData, {
-                headers: {'content-type': 'multipart/form-data', Authorization: token}
+                headers: { 'content-type': 'multipart/form-data', Authorization: token }
             })
             setLoading(false)
             setImages(res.data)
@@ -79,10 +81,10 @@ function CreateProduct() {
 
     const handleDestroy = async () => {
         try {
-            if(!isAdmin) return alert("Ты не админ!!!")
+            if (!isAdmin) return alert("Ты не админ!!!")
             setLoading(true)
-            await axios.post('/api/destroy', {public_id: images.public_id}, {
-                headers: {Authorization: token}
+            await axios.post('/api/destroy', { public_id: images.public_id }, {
+                headers: { Authorization: token }
             })
             setLoading(false)
             setImages(false)
@@ -91,24 +93,24 @@ function CreateProduct() {
         }
     }
 
-    const handleChangeInput = e =>{
-        const {name, value} = e.target
-        setProduct({...product, [name]:value})
+    const handleChangeInput = e => {
+        const { name, value } = e.target
+        setProduct({ ...product, [name]: value })
     }
 
-    const handleSubmit = async e =>{
+    const handleSubmit = async e => {
         e.preventDefault()
         try {
-            if(!isAdmin) return alert("Ты не админ")
-            if(!images) return alert("Изображение не загружено")
+            if (!isAdmin) return alert("Ты не админ")
+            if (!images) return alert("Изображение не загружено")
 
-            if(onEdit){
-                await axios.put(`/api/products/${product._id}`, {...product, images}, {
-                    headers: {Authorization: token}
+            if (onEdit) {
+                await axios.put(`/api/products/${product._id}`, { ...product, images }, {
+                    headers: { Authorization: token }
                 })
-            }else{
-                await axios.post('/api/products', {...product, images}, {
-                    headers: {Authorization: token}
+            } else {
+                await axios.post('/api/products', { ...product, images }, {
+                    headers: { Authorization: token }
                 })
             }
             setCallback(!callback)
@@ -124,47 +126,47 @@ function CreateProduct() {
     return (
         <div className="create_product">
             <div className="upload">
-                <input type="file" name="file" id="file_up" onChange={handleUpload}/>
+                <input type="file" name="file" id="file_up" onChange={handleUpload} />
                 {
                     loading ? <div id="file_img"><Loading /></div>
 
-                    :<div id="file_img" style={styleUpload}>
-                        <img src={images ? images.url : ''} alt=""/>
-                        <span onClick={handleDestroy}>X</span>
-                    </div>
+                        : <div id="file_img" style={styleUpload}>
+                            <img src={images ? images.url : ''} alt="" />
+                            <span onClick={handleDestroy}>X</span>
+                        </div>
                 }
-                
+
             </div>
 
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <label htmlFor="product_id">Product ID</label>
                     <input type="text" name="product_id" id="product_id" required
-                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
+                        value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
                 </div>
 
                 <div className="row">
                     <label htmlFor="title">Наименование</label>
                     <input type="text" name="title" id="title" required
-                    value={product.title} onChange={handleChangeInput} />
+                        value={product.title} onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
                     <label htmlFor="price">Цена</label>
                     <input type="number" name="price" id="price" required
-                    value={product.price} onChange={handleChangeInput} />
+                        value={product.price} onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
                     <label htmlFor="description">Описание</label>
                     <textarea type="text" name="description" id="description" required
-                    value={product.description} rows="5" onChange={handleChangeInput} />
+                        value={product.description} rows="5" onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
                     <label htmlFor="content">Содержание</label>
                     <textarea type="text" name="content" id="content" required
-                    value={product.content} rows="7" onChange={handleChangeInput} />
+                        value={product.content} rows="7" onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
@@ -180,7 +182,20 @@ function CreateProduct() {
                         }
                     </select>
                 </div>
-                <button type="submit">{onEdit? "Обновить" : "Создать"}</button>
+                <div className="row">
+                    <label htmlFor="brands">Бренды: </label>
+                    <select name="brand" value={product.brand} onChange={handleChangeInput} >
+                        <option value="">выберите бренд</option>
+                        {
+                            brands.map(brand => (
+                                <option value={brand._id} key={brand._id}>
+                                    {brand.name}
+                                </option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <button type="submit">{onEdit ? "Обновить" : "Создать"}</button>
             </form>
         </div>
     )
